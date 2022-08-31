@@ -26,6 +26,8 @@ public class ManagerHotel  {
         this.list = list;
     }
 
+    // kiểm tra xem phòng đã có người thuê chưa
+
     //1. thêm vào danh sách.
     public void addClient(Hotel c) {
         this.list.add(c);
@@ -39,8 +41,8 @@ public class ManagerHotel  {
     public void deleteClient(String name) {
         int check = 0;
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getClient().getName() == name) {
-                list.remove(name);
+            if (list.get(i).getClient().getName().equals(name)) {
+                list.remove(i);
                 check = 1;
             }
         }

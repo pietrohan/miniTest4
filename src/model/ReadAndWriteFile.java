@@ -11,7 +11,7 @@ public class ReadAndWriteFile {
             BufferedWriter bw = new BufferedWriter(fw);
             for(Hotel h: hotels){
                 bw.write(h.getIdRoom()+","+h.getBoardingDay()+","+h.getKindOfRoom()+","+h.getPrice());
-                if(h.getClient() != null) {
+                if(h.getClient().getName() != null) {
                     bw.write("," + h.getClient().getName()+","+h.getClient().getAge()+","+h.getClient().getIdCard());
                 }
                 bw.newLine();
@@ -34,7 +34,6 @@ public class ReadAndWriteFile {
                 line = br.readLine();
                 if (line == null)
                     break;
-
                 String[] text = line.split(",");
                 int idRoom = Integer.parseInt(text[0]);
                 int boardingDay = Integer.parseInt(text[1]);

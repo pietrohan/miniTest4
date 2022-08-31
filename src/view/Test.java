@@ -20,7 +20,7 @@ public class Test {
             System.out.println("------Menu-------");
             System.out.println("1. thêm khách hàng: \n" +
                     "2. Hiển thị thông tin khách hàng: \n" +
-                    "3. Xóa thông tin khách hàng theo số phòng: \n" +
+                    "3. Xóa thông tin khách hàng theo tên: \n" +
                     "4. Tính số tiền phòng khi khách trả phòng: \n" +
                     "5. Tìm kiếm thông tin khách hàng dựa trên số phòng: \n" +
                     "0. thoát chương trình.");
@@ -36,14 +36,12 @@ public class Test {
                     System.out.println(" nhập loại phòng(VIP, phòng đôi,khác): ");
                     String kindOfRoom = scanner.nextLine();
                     double price;
-                    if (kindOfRoom == "VIP")
+                    if (kindOfRoom.equals("VIP"))
                         price = 1000;
-                    else if (kindOfRoom == "phòng đôi") {
+                    else if (kindOfRoom.equals("phòng đôi") ) {
                         price = 700;
                     }else
                         price =400;
-                    System.out.println("nhập thông tin khách hàng: ");
-                    String clientImformation = scanner.nextLine();
                     System.out.println(" Nhập tên khách hàng: ");
                     String name = scanner.nextLine();
                     System.out.println(" nhập tuổi: ");
@@ -52,7 +50,6 @@ public class Test {
                     String idCard = sc1.nextLine();
                     Hotel hotel = new Hotel(idRoom,boardingDay,kindOfRoom,price,name,age,idCard);
                     listRoom.addClient(hotel);
-                    ReadAndWriteFile.writeToFile("Client.txt",listRoom.getList());
                     break;
                 case 2:
                     //2. Hiển thị thông tin khách hàng:
@@ -64,6 +61,8 @@ public class Test {
                     String name1 = sc1.nextLine();
                     listRoom.deleteClient(name1);
                    break;
+                case 0:
+                    ReadAndWriteFile.writeToFile("Client.txt",listRoom.getList());
             }
         }while (choice != 0);
 
